@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title> StoneMiner </title>
+      <link rel="shortcut icon" href="visuals/media/stone.png" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="visuals/media/stone.png" />
+      <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+      <link rel="apple-touch-startup-image" href="visuals/media/stone.png">
+      <script src="src/engine/jQuery.js" type="text/javascript"></script>
+      <script src="src/settings.js" type="text/javascript"></script>
+      <script type="text/javascript" src="src/engine/core.js"></script>
+      <script type="text/javascript" src="game/core.js"></script>
+      <link rel="stylesheet" href="visuals/style/style.css" type="text/css" />      
+   </head>
+   <body onload="load();" onkeyup="checkKey();" id="image">
+   <div id="game">
+      <audio src="http://a.tumblr.com/tumblr_m6eycbyM1c1qjs0gjo1.mp3" id="music_blocks" preload="auto"></audio>
+      <div id="clicks" onTouchStart="clicksOnclick()" class="font"> </div>
+      <div>
+         <span><label ID="amount" class="font">0</label> <LABEL id="label" class="font">Stone</LABEL></span>
+      </div>
+      <div><!--100% of hackers always look here first. :/-->
+         <img src="visuals/media/stone.png" ID="mine" ontouchstart="newMusic()" />
+      </div>
+         <img src="visuals/media/wood.png" id="leftSideBar" class="sidebar">
+         <img src="visuals/media/wood.png" id="rightSideBar" class="sidebar">
+         <img src="visuals/media/wood.png" id="leftSideBarTwo" class="sidebar">
+         <img src="visuals/media/wood.png" id="rightSideBarTwo" class="sidebar">
+      <div id="store">
+         <div id="steve" ontouchend="store('miner')"></div>
+         <div id="mines" ontouchend="store('shaft')"></div>
+         <div id="factory" ontouchend="store('factory')"></div>
+         <div id="harvester" ontouchend="store('harvester')"></div>
+         <div id="time" ontouchend="store('timeWarp')"></div>
+      </div>
+      <p> 
+         <img src="visuals/media/enchanted_book.png" id="upgradeStore" onTouchEnd="openUpgrades()" />
+      </p>
+      <div id="upgradeMenu" class="font">
+         Upgrades:
+         <label id="pageOne">
+         <div id="stoneAddIncrease" ontouchend="buyStoneAddIncrease()"></div>
+         <div id="clicksIncrease" ontouchend="buyUseIncrease()"></div>
+         <div id="minerIncrease" ontouchend="buyMinerIncrease()"></div>
+         <div id="speedIncrease" ontouchend="buySpeed()"></div>
+         </label>
+         <label id="pageTwo" style="display: none"><br>
+         Oh well. Its still not here. :(
+         <!--<div id="reallygoodcookies" ontouchend="extend('reallygoodcookies')">@@@@@@@@@@@ @@@@@@@@@<div><br><label onclick="">Buy |</label> <label onclick="descend('reallygoodcookies')">Cancel</label><br>Description</div></div>-->
+         <br><div id="stoneSiege" ontouchend="stoneSiegeActive(1)" style="border: 2.1px solid black; margin-bottom: 1.5px;">Examine space rock</div>
+         </label>
+         <label id="upgradePageTurner" style="width: 100%; text-align: center; position: absolute; bottom: 10px; left: 0%" ontouchstart="nextPage()">Item Upgrades<br>\/</label>
+      </div>
+      <div id="register" onclick="registerOnclick();" class="font"> </div>
+      <div id="achieve" onclicks="achieveOnclick();"> </div>
+      <div id="beta" ontouchend="info()" class="font"> Alpha Build 19</div>
+      <div id="username" onclick="changeName()" class="font">Loading...</div>
+      <div id="broadcast" class="font">Loading Broadcast...</div>
+      <div id="background"></div>
+      <div id="storeBought">
+         <div id="steveMinerAmount" class="font">0 Miners</div>
+         <div id="mineShaftAmount" class="font">0 Mineshafts</div>
+         <div id="factoryAmount" class="font">0 Factories</div>
+         <div id="harvesterAmount" class="font">0 Harvesters</div>
+         <div id="timeWarpAmount" class="font">0 TimeWarps</div>
+      </div>
+      <img src="visuals/media/book.png" ontouchend="showMen()" id="men" />
+      <!--MENU-->
+      <div id="menu">
+         <label class="tag font" id="tag"> Options:</label><br>
+          <div id="options" style="-webkit-tap-highlight-color: rgba(0,0,0,0);">
+         <input type="button" onTouchEnd="reset()" value="Reset Game" id="reset" class="font fancyButt" />
+         <input type="button" onTouchEnd="update()" value="Check For Update" id="button" class="font fancyButt" />
+         <input type="button" onTouchEnd="showStat()" value="Stats" class="font fancyButt" id="stat"/>
+         <input type="button" onTouchEnd="fancyGraphics()" value="Fancy Graphics ON" id="fancy" class="font fancyButt" />
+         <input type="button" onTouchEnd="stopMusic()" value="Stop Music" id="stopMPThree" class="font fancyButt" />
+         <input type="button" onTouchEnd="setOffline()" value="Offline Mode" id="offline" class="font fancyButt" />
+         <input type="button" onTouchEnd="hideBuildings()" value="Hide Buildings" id="hide" class="font fancyButt" />
+         <input type="button" onTouchEnd="enablePlugins()" value="Enable Extensions" id="pluginLoad" class="font fancyButt" />
+         <input type="button" onTouchEnd="normalFont()" value="Minecraft Font" id="normal" />
+         <input type="button" onTouchEnd="intuitive()" value="Increase Legibility OFF" id="legibility"  class="font" />
+         <input type="button" onTouchEnd="titleDisp()" value="Title Displays Stone ON" id="titleDisplay"  class="font" />
+         <input type="button" onClick="switchInput()" value="Touch Mode ON" id="type"  class="font" />
+         <input type="button" onTouchEnd="changeMessage()" value="Messages Viewed: 4" id="viewed"  class="font" />
+         <!--<input type="button" onTouchEnd="saveGame()" value="Save Game" id="save" />
+            <input type="button" onTouchEnd="focusGame()" value="Focus ON" id="focus" />--> 
+            </div>
+         <div id="updateResults" onclick="document.getElementById('updateResults').innerHTML = ''"  class="font"> </div>
+         <div id="stats" class="font">
+            <div id="achieveArchive" class="font"> 0 Achievements <br></div>
+            <div id="itemsArchive" class="font"> 0 Store Items Bought <br></div>
+            <div id="pickedArchive" class="font"> <label  class="font" id="pickedArchiveAmount">0</label> Hand Mined Stone <br></div>
+            <br>
+            <div id="achievementTag" class="font">Achievements:</div>
+            <div id="achievementsUnlocked" class="font">
+            </div>
+         </div>
+         <label class="tag font" id="tagg"> News:</label>
+         <div class="newsAlert font" id="fontConnect">
+         <p style="color: #0000AA; text-shadow: 2.98px 2.98px 0px #00002A" class="header"> More visitors, bug reporting and updates</p>
+            Stoneminer is really popular now thanks to iNoCydia, iDubStore, RisingHackStore and Hack market! Also, if you want to report bugs, tweet to me <label style="color: blue">@legomite</label> Finally, some new updates are coming soon, coming with some of the biggest gui changes since Build 13. I cannot wait to release for you! Also, iPhone users are getting a big design update. iPad users? Pretty much the same. :)
+      </div>
+      <!--<div id="legomite" ontouchend="info()">Legomite 2014</div>-->
+      <!--<script type="text/javascript" src="http://stoneminer.comyr.com/retina.js"></script>-->
+      </div></div>
+      <div id="message" style="width: 100%; height: 100%; font-size: 40px; position: fixed; text-align: center; display: none; color: white">Why are you using portrait when you can enjoy the landscape?</div>
+      <div id="inocydia" style="width: 100%; height: 100%; font-size: 40px; position: fixed; text-align: center; display: none; color: white; background-color: darkblue">For iNoCydia:<br>Add this page to the homescreen and dismiss this message.<br>NOTE: This message will show again once you add this to the homescreen. Do not worry, it will dissapear next time you load the app. ALSO, it may be slow on the first try, it WILL get faster
+      <div style="background-color: blue; width: 200px; height: 80px;" onclick="createStorage('inocydiacheck', 'true'); hide('inocydia');">Dismiss</div>
+      <!-- Start of StatCounter Code for Default Guide -->
+      <script type="text/javascript">
+      var sc_project=10279845; 
+      var sc_invisible=1; 
+      var sc_security="1ca340fa"; 
+      var scJsHost = (("https:" == document.location.protocol) ?
+      "https://secure." : "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" +
+      scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+      </script>
+      <noscript><div class="statcounter"><a title="web counter"
+      href="http://statcounter.com/" target="_blank"><img
+      class="statcounter"
+      src="http://c.statcounter.com/10279845/0/1ca340fa/1/"
+      alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->      
+   </body>
+</html>
