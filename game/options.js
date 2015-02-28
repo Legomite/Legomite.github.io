@@ -1,14 +1,12 @@
 function enablePlugins() {
 if(offlineMode === false) {
 extensionEnable = true;
-buttValue = buttValue + 1;
-document.getElementById('pluginLoad').value = "Add extension";
+buttValue++;
 if (buttValue > 1) {
 pluginExist = false;
 }
 } else {
-achievePost("ERROR Offline Mode Is On!");
-registerPost("ERROR Offline Mode Is On!");
+achievePost("Sorry, Offline mode is on.");
 }
 }
 
@@ -40,13 +38,13 @@ if(hidden == false) {
 $(document).ready(function(){
     $("#storeBought").fadeToggle('fast');
   });
-document.getElementById("hide").value = "Show Buildings";
+document.getElementById("hide").value = "Buildings OFF";
 hidden = true;
 } else {
 $(document).ready(function(){
     $("#storeBought").fadeToggle('fast');
   });
-document.getElementById("hide").value = "Hide Buildings";
+document.getElementById("hide").value = "Buildings ON";
 hidden = false;
 }
 }
@@ -68,11 +66,11 @@ document.getElementById("fancy").value = "Fancy Graphics OFF";
 } else {
 document.getElementById("fontConnect").style.textShadow = "3px 2.98px 0px #002A00";
 document.getElementById("clicks").style.textShadow="3px 2.98px 0px #002A00";
-document.getElementById("steve").style.textShadow="5px 5px 5px black";
-document.getElementById("mines").style.textShadow="5px 5px 5px black";
-document.getElementById("factory").style.textShadow="5px 5px 5px black";
-document.getElementById("harvester").style.textShadow="5px 5px 5px black";
-document.getElementById("time").style.textShadow="5px 5px 5px black";
+document.getElementById("steve").style.textShadow="2px 2px 1px black";
+document.getElementById("mines").style.textShadow="2px 2px 1px black";
+document.getElementById("factory").style.textShadow="2px 2px 1px black";
+document.getElementById("harvester").style.textShadow="2px 2px 1px black";
+document.getElementById("time").style.textShadow="2px 2px 1px black";
 document.getElementById("achieve").style.boxShadow="0px 0px 5px black";
 document.getElementById("upgradeMenu").style.textShadow="5px 5px 5px black";
 fancy = true;
@@ -83,17 +81,16 @@ document.getElementById("fancy").value = "Fancy Graphics ON";
 
 function switchInput() {
 if(touch) {
-touch = false;
 document.getElementById('type').value = 'Touch Mode OFF';
 document.body.innerHTML = document.body.innerHTML.replace(/ontouchend/g,'onclick');
 document.body.innerHTML = document.body.innerHTML.replace(/ontouchstart/g,'onmousedown');
+touchswitch = 'onclick';
 document.getElementById('background').style.display = 'initial';
 document.getElementById('username').style.display = 'initial';
-if(defaultFont) {
-normalFont('default');
-} else {
-normalFont('normal');
-}
+delay6 = setInterval(function() {
+touch = false;
+clearInterval(delay6);
+}, 500);
 $(document).ready(function() {
 $("#mine").mousedown(function() {
 $("#mine").animate({
@@ -115,19 +112,60 @@ top: "80px"
 addStone(1);
 });
 });
+
+$("#mine").mouseleave(function() {
+$("#mine").animate({
+height: "220px",
+width: "220px",
+left: "-1px",
+top: "80px"
+}, 30);
 });
-} else {
-touch = true;
+});
+
+$(document).ready(function() {
+$("#store div").mousedown(function() {
+$(this).animate({
+opacity: "0.9"
+}, 30);
+});
+$("#store div").mouseup(function() {
+$(this).animate({
+opacity: "0.8"
+}, 30);
+});
+
+$("#store div").mouseleave(function() {
+$(this).animate({
+opacity: "0.8"
+}, 30);
+});
+
+$("#upgradeStore").mousedown(function() {
+$("#upgradeStore").animate({
+height: "75px",
+width: "75px"
+}, 30);
+});
+
+$("#upgradeStore").mouseup(function() {
+$("#upgradeStore").animate({
+height: "80px",
+width: "80px"
+}, 30);
+});
+});
+} else if(touch == false) {
 document.getElementById('type').value = 'Touch Mode ON';
 document.body.innerHTML = document.body.innerHTML.replace(/onclick/g,'ontouchend');
 document.body.innerHTML = document.body.innerHTML.replace(/onmousedown/g,'ontouchstart');
 document.getElementById('background').style.display = 'initial';
 document.getElementById('username').style.display = 'initial';
-if(defaultFont) {
-normalFont('default');
-} else {
-normalFont('normal');
-}
+touchswitch = 'ontouchend';
+delay7 = setInterval(function() {
+touch = true;
+clearInterval(delay7);
+}, 500);
 $(document).ready(function() {
 $("#mine").on("touchstart", function() {
 $("#mine").animate({
@@ -148,9 +186,69 @@ top: "80px"
 addStone(1);
 });
 });
+
+$("#men").on("touchstart", function() {
+$("#men").animate({
+height: "75px",
+width: "75px"
+}, 30);
+});
+
+$("#men").on("touchend", function() {
+$("#men").animate({
+height: "80px",
+width: "80px"
+}, 30);
+});
+
+$("#upgradeStore").on("touchstart", function() {
+$("#upgradeStore").animate({
+height: "75px",
+width: "75px"
+}, 30);
+});
+
+$("#upgradeStore").on("touchend", function() {
+$("#upgradeStore").animate({
+height: "80px",
+width: "80px"
+}, 30);
+});
+});
+
+$(document).ready(function() {
+$("#store div").on("touchstart", function() {
+$(this).animate({
+opacity: "0.9"
+}, 30);
+});
+$("#store div").on("touchend", function() {
+$(this).animate({
+opacity: "0.8"
+}, 30);
+});
 });
 }
 }
+
+
+autosave = true;
+function setautosave() {
+if(autosave == true) {
+autosave = false;
+createStorage('autosave', autosave);
+document.getElementById('autosave').value = 'Autosave: OFF';
+clearInterval(mainSave);
+show('savegame');
+} else {
+autosave = true;
+createStorage('autosave', autosave);
+mainSave = setInterval(SAVEFILE , 50);
+hide('savegame');
+document.getElementById('autosave').value = 'Autosave: ON';
+}
+}
+
 
 function changeMessage() {
 if(small == false) {
@@ -201,4 +299,11 @@ preventer = 1;
 }
 }
 document.getElementById('username').innerHTML = currentUsername + '\'s Mineshaft';
+}
+
+if(developerMode == true) {
+devMSG4 = setInterval(function() {
+document.getElementById('devMenu').innerHTML = 'options.js loaded!' + '<br>' + document.getElementById('devMenu').innerHTML;
+clearInterval(devMSG4);
+}, 100);
 }
