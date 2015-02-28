@@ -2,8 +2,9 @@ function newMusic() {
 var randomnumber = Math.floor(Math.random()*16);
 if(enableMusic == false) {
 if(randomnumber == 0) {
-playAudio('music_minecraft');
-audio = 'music_minecraft';
+createAudio('music_minecraft', 'http://audio.kanobu.ru/2011/03/08/95940b62-1123-45c8-9959-60e0a7b732f3/08-minecraft.mp3');
+setAttribute('id', 'music_minecraft', 'onended', 'newMusic(); enableMusic = false');
+setAttribute('id', 'music_minecraft', 'onload', 'playAudio("music_minecraft"); audio = "music_minecraft";');
 enableMusic = true;
 } else if(randomnumber == 1) {
 playAudio('music_blocks');
@@ -67,4 +68,11 @@ audio = 'music_beginning';
 enableMusic = true;
 }
 }
+}
+
+if(developerMode == true) {
+devMSG3 = setInterval(function() {
+document.getElementById('devMenu').innerHTML = 'music.js loaded!' + '<br>' + document.getElementById('devMenu').innerHTML;
+clearInterval(devMSG3);
+}, 100);
 }
