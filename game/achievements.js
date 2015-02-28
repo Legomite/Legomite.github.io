@@ -34,7 +34,7 @@ highNumber = true;
 AC++;
 bonus = 10;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[High Number] Achievement Unlocked. Get 100 stone");
 newImg("visuals/media/stone.png", "[High Number] Achievement Unlocked. Get 100 stone");
 }
@@ -43,7 +43,7 @@ reachForTheSky = true;
 AC++;
 bonus = 25;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Reach For The Sky!] Achievement Unlocked. Get 1000 stone");
 newImg("visuals/media/stone_pickaxe.png", "[Reach For The Sky!] Achievement Unlocked. Get 1000 stone");
 } 
@@ -52,7 +52,7 @@ needCompany = true;
 AC++;
 bonus = 12;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Need Company] Achievement Unlocked. Get 10 Miners");
 newImg("visuals/media/wood_pickaxe.png", "[Need Company] Achievement Unlocked. Get 10 Miners");
 }
@@ -61,16 +61,16 @@ stoneIndustry = true;
 AC++;
 bonus = 15;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Stone Industry] Achievement Unlocked. Get 5 Factories");
 newImg("visuals/media/stonebrick.png", "[Stone Industry] Achievement Unlocked. Get 5 Factories");
 }
-if (brokenBorder == false && stone == 10000000000000000) {
+if (brokenBorder == false && stone >= 10000000000000000) {
 brokenBorder = true;
 AC++;
 bonus = 100;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Broken Borders] Achievement Unlocked. Get 10000000000000000 stone");
 newImg("http://1.bp.blogspot.com/-LcYCcZ6U57Q/T6AuQSFOAqI/AAAAAAAABO8/86ZNnx6PbvY/s1600/minecraft_stone.jpg", "[Broken Borders] Achievement Unlocked. Get 10000000000000000 stone");
 }
@@ -79,7 +79,7 @@ firstToHire = true;
 AC++;
 bonus = 5;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[First To Hire] Achievement Unlocked. Hire your first Miner");
 newImg("visuals/media/stevehead.png", "[First To Hire] Achievement Unlocked. Hire your first Miner");
 }
@@ -94,7 +94,7 @@ dawnOfANewCollection = true;
 AC++;
 bonus = 2;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Dawn Of A New Collection] Achievement Unlocked. Get 10 Achievements");
 newImg("http://hydra-media.cursecdn.com/minecraft.gamepedia.com/9/93/Watch.png", "[Dawn Of A New Collection] Achievement Unlocked. Get 10 Achievements");
 }
@@ -103,7 +103,7 @@ masterOfRockets = true;
 AC++;
 bonus = 30;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Master Of Rockets] Achievement Unlocked. Get 10 Harvesters to collect stone from the moon");
 newImg("http://hydra-media.cursecdn.com/minecraft.gamepedia.com/4/47/Moon.png", "[Master Of Rockets] Achievement Unlocked. Get 10 Harvesters to collect stone from the moon");
 }
@@ -112,7 +112,7 @@ rippingTheSpaceTimeContinuum = true;
 AC++;
 bonus = 35;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Ripping The Space Time Continuum] Achievement Unlocked. Get  5 Time Warps");
 newImg("http://wallpaper.pickywallpapers.com/samsung-epic/sun-in-the-sky-in-minecraft.jpg", "[Ripping The Space Time Continuum] Achievement Unlocked. Get  5 Time Warps");
 }
@@ -121,7 +121,7 @@ dirtMouth = true;
 AC++;
 bonus = 12;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Dirt Mouth] Achievement Unlocked. Get 5 Mineshafts");
 newImg("http://3.bp.blogspot.com/_8Sji9qUo2R8/TNsUFdIHheI/AAAAAAAAACA/LdeXz0aozRc/s1600/Minecart.png", "[Dirt Mouth] Achievement Unlocked. Get 5 Mineshafts");
 }
@@ -130,7 +130,7 @@ mudLover = true;
 AC++;
 bonus = 10;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Mud Lover] Achievement Unlocked. Get 10 Mineshafts");
 newImg("http://i.imgur.com/K012WIT.png", "[Mud Lover] Achievement Unlocked. Get 10 Mineshafts");
 }
@@ -139,7 +139,7 @@ tunnelDigger = true;
 AC++;
 bonus = 15;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Tunnel Digger] Achievement Unlocked. Get 15 Mineshafts");
 newImg("http://minecraft-wiki.com/wp-content/uploads/2010/11/Storage_Minecart.png", "[Tunnel Digger] Achievement Unlocked. Get 15 Mineshafts");
 }
@@ -148,7 +148,7 @@ bigSpender = true;
 AC++;
 bonus = 23;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Big Spender] Achievement Unlocked. Buy 20 items from the store");
 newImg("http://hydra-media.cursecdn.com/minecraft.gamepedia.com/f/f3/Ironitm.png", "[Big Spender] Achievement Unlocked. Buy 20 items from the store");
 }
@@ -157,7 +157,7 @@ massProduction = true;
 AC++;
 bonus = 23;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Mass Production] Achievement Unlocked. Create 1000 stone every  " + time + " Miliseconds");
 newImg("http://minecraft-wiki.com/wp-content/uploads/2010/11/Stone.png", "[Mass Production] Achievement Unlocked. Create 1000 stone every  " + time + " Miliseconds");
 }
@@ -172,7 +172,7 @@ bigSpenderSilver = true;
 AC++;
 bonus = 13;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Big Spender Silver] Achievement Unlocked. Buy 30 items from the store");
 newImg("http://hydra-media.cursecdn.com/minecraft.gamepedia.com/3/37/Golditm.png", "[Big Spender Silver] Achievement Unlocked. Buy 30 items from the store");
 }
@@ -181,7 +181,7 @@ almostTooManyItems = true;
 AC++;
 bonus = 8;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Almost Too Many Items!] Achievement Unlocked. Buy 55 items from the store");
 newImg("http://hydra-media.cursecdn.com/minecraft.gamepedia.com/9/90/Diamond_%28Gem%29.png", "[Almost Too Many Items!] Achievement Unlocked. Buy 55 items from the store");
 }
@@ -190,7 +190,7 @@ tooManyItems = true;
 AC++;
 bonus = 20;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Too Many Items!] Achievement Unlocked. Buy 85 items from the store");
 newImg("visuals/media/diamond_block.png", "[Too Many Items!] Achievement Unlocked. Buy 85 items from the store");
 }
@@ -199,7 +199,7 @@ nowTooManyItems = true;
 AC++;
 bonus = 34;
 stone+= bonus;
-registerPost("+ " + bonus);
+bonusPost("+ " + bonus);
 achievePost("[Now, Too Many Items!] Achievement Unlocked. Buy 100 items from the store");
 newImg("http://fc03.deviantart.net/fs71/f/2013/038/4/4/iron_ingot_by_barakaldo-d5u6iw5.gif", "[Now, Too Many Items!] Achievement Unlocked. Buy 100 items from the store");
 }
@@ -249,3 +249,10 @@ part1[5] = 'You can qualify for the most awards contest, in Crypton.';
 currentRange = 6;
 }
 }, 00);
+
+if(developerMode == true) {
+devMSG1 = setInterval(function() {
+document.getElementById('devMenu').innerHTML = 'achievements.js loaded!' + '<br>' + document.getElementById('devMenu').innerHTML;
+clearInterval(devMSG1);
+}, 100);
+}
