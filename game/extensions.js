@@ -1,3 +1,7 @@
+function displayPlugins() {
+loadPrompt(pluginList);
+}
+
 pluginExist = false;
 goalOne = false;
 goalTwo = false;
@@ -13,21 +17,9 @@ pluginExist = true;
 }
 if(option == "" || option === false || option == "cancel") {
 pluginExist = true;
-achievePost('Plugin addition canceled.');
+achievePost('Canceled.');
 }
-if (option == "legosHack") {
-pluginExist = true;
-registerPost("Legos Hack installed.");
-stone = Infinity;
-steveMiner = 0;
-mineShaft = 0;
-factory = 0;
-harvester = 0;
-timeWarp = 0;
-use = Infinity;
-resetDefaultTicker("0");
-achievePost("This game has been hacked!");
-}
+
 if (option == "customBackground") {
 pluginExist = true;
 registerPost("Custom Background installed. ");
@@ -37,7 +29,7 @@ document.body.style.backgroundImage = imgPost;
 }
 if(option == "exLoad") {
 pluginExist = true;
-var getTheCode = prompt("Enter Code Here.");
+var getTheCode = prompt("This plugin is outdated! Use - instead!");
 eval(getTheCode);
 }
 if(option == "goals") {
@@ -65,7 +57,7 @@ alert("Goal Completed! Check For More!");
 if(option == "http") {
 pluginExist = true;
 var temp = prompt("Enter http plugin address", "http://");
-addScript(temp, "head");
+addScript(temp);
 }
 
 if(option == "legosHackPlus") {
@@ -112,3 +104,10 @@ resetDefaultTicker(timeSpeed);
 setInterval(function() {
 checker();
 }, 0);
+
+if(developerMode == true) {
+devMSG2 = setInterval(function() {
+document.getElementById('devMenu').innerHTML = 'extensions.js loaded!' + '<br>' + document.getElementById('devMenu').innerHTML;
+clearInterval(devMSG2);
+}, 100);
+}
